@@ -1,6 +1,8 @@
 # Localboard
 
-This application will read all files from your `Code` folder.
+![screen shot 2018-06-07 at 20 22 50](https://user-images.githubusercontent.com/6575921/41119596-7863eca4-6a93-11e8-9c0a-e634890d07f7.png)
+
+> This application will read all files from your `Code` folder. (To be honest, it will exit out this project and read all directories there. and generate blocks/urls for them)
 
 Do not forget to set your `APP_TLD` in your `.env` file to let the application know what .TLD to use when generating links.
 
