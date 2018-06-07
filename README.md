@@ -4,8 +4,11 @@
 
 > This application will read all files from your `Code` folder. (To be honest, it will exit out this project and read all directories there. and generate blocks/urls for them)
 
+## NOTE 
 Do not forget to set your `APP_TLD` in your `.env` file to let the application know what .TLD to use when generating links.
 
+
+## Installation
 Install composer dependancies
 
 ```bash
