@@ -16,9 +16,7 @@ use Illuminate\Support\Fluent;
 Route::get('/', function () {
     $projects = collect();
     if ($dirs = opendir('../../')) {
-
         while (false !== ($entry = readdir($dirs))) {
-
             if ($entry != '.' && $entry != '..') {
                 $projects->push(new Fluent([
                     'name' => $entry,
@@ -27,7 +25,6 @@ Route::get('/', function () {
             }
         }
     }
-
     closedir($dirs);
 
     $ignore = collect([
