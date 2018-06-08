@@ -15,17 +15,7 @@ class HomeController extends Controller
 
         $this->pushProjectsFrom($this->folders());
 
-        try {
-            $contents = file_get_contents('../.ignore-folders');
-            $ignore = explode("\n", $contents);
-            $ignore = collect($ignore);
-        } catch (\Exception $e) {
-            throw new \ErrorException("Please add .ignore-folders to the root of this project.");
-        }
-
-        $this->projects = $this->projects->reject(function ($project) use ($ignore) {
-            return collect($ignore)->contains($project->name);
-        });
+        $this->rejectIgnored();
 
         return view('welcome', ['projects' => $this->projects->sortBy('name')]);
     }
@@ -65,5 +55,20 @@ class HomeController extends Controller
         $folders = explode("\n", $contents);
 
         return $folders;
+    }
+
+    protected function rejectIgnored(): void
+    {
+        try {
+            $contents = file_get_contents('../.ignore-folders');
+            $ignore = explode("\n", $contents);
+            $ignore = collect($ignore);
+        } catch (\Exception $e) {
+            throw new \ErrorException("Please add .ignore-folders to the root of this project.");
+        }
+
+        $this->projects = $this->projects->reject(function ($project) use ($ignore) {
+            return collect($ignore)->contains($project->name);
+        });
     }
 }
