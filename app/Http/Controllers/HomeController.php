@@ -7,29 +7,16 @@ use Illuminate\Support\Fluent;
 
 class HomeController extends Controller
 {
+    protected $projects;
+
     public function index()
     {
-        $projects = collect();
+        $this->projects = collect();
 
         $contents = file_get_contents('../.folders');
         $folders = explode("\n", $contents);
-        foreach($folders as $folder){
-            if ($dirs = opendir('../../'.$folder)) {
-                while (false !== ($entry = readdir($dirs))) {
-                    if ($entry != '.' && $entry != '..') {
-                        $projects->push(new Fluent([
-                            'name' => $entry,
-                            'url'  => $entry . env('APP_TLD')
-                        ]));
-                    }
-                }
-            }
-            closedir($dirs);
-        }
 
-
-
-
+        $this->pushProjectsFrom($folders);
 
         try {
             $contents = file_get_contents('../.ignore-folders');
@@ -39,10 +26,30 @@ class HomeController extends Controller
             throw new \ErrorException("Please add .ignore-folders to the root of this project.");
         }
 
-        $projects = $projects->reject(function($project) use ($ignore){
+        $this->projects = $this->projects->reject(function($project) use ($ignore){
             return collect($ignore)->contains($project->name);
         });
 
-        return view('welcome', ['projects' => $projects->sortBy('name')]);
+        return view('welcome', ['projects' => $this->projects->sortBy('name')]);
+    }
+
+    /**
+     * @param $folders
+     */
+    protected function pushProjectsFrom($folders): void
+    {
+        foreach ($folders as $folder) {
+            if ($dirs = opendir('../../'.$folder)) {
+                while (false !== ($entry = readdir($dirs))) {
+                    if ($entry != '.' && $entry != '..') {
+                        $this->projects->push(new Fluent([
+                            'name' => $entry,
+                            'url'  => $entry . env('APP_TLD')
+                        ]));
+                    }
+                }
+            }
+            closedir($dirs);
+        }
     }
 }
