@@ -36,6 +36,13 @@ yarn && yarn dev
 
 In your `config/folders.php` file you can define which folders should be read and ignored.
 
+### Pin code protection
+
+Set a pin.
+`php artisan code:set 1234`
+
+If you don't want this. Add `UNDER_CONSTRUCTION_ENABLED=false` to your `.env` file.
+
 
 
 
