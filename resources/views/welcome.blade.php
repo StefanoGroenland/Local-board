@@ -46,10 +46,14 @@
         var val = $(this).val();
         $('.site').parent().show();
 
-        if (val != "") {
-            $('h3:not(:contains(' + val + '))').parent().hide();
+        if (val !== "") {
+            $('h3:not(:contains(' + capitalizeFirstLetter(val) + '))').parent().hide();
         }
     });
+
+    function capitalizeFirstLetter(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    }
 </script>
 </body>
 </html>
