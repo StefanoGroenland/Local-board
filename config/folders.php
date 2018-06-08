@@ -13,8 +13,6 @@ return [
 
     'read' => [
         '/',
-        'testfolder',
-        'testfolder/child1'
     ],
 
     /*
@@ -27,7 +25,7 @@ return [
     */
 
     'ignore' => [
-        'child2'
+        ''
     ]
 
 ];
