@@ -32,6 +32,20 @@ Install yarn dependancies
 yarn && yarn dev
 ```
 
+## Define folders to read from
+
+```bash
+cp .folders.example .folders
+```
+
+Example: 
+```
+/
+/folder
+/folder/folder
+```
+
+
 ## Ignore certain folders.
 
 Below is an example for ignoring folders, You can change this array located in the `.ignore-folders` file. You can find this file in the root of the application.
