@@ -32,30 +32,11 @@ Install yarn dependancies
 yarn && yarn dev
 ```
 
-## Define folders to read from
+## Define folders to read / ignore
 
-```bash
-cp .folders.example .folders
-```
-
-Example: 
-```
-/
-/folder
-/folder/folder
-```
+In your `config/folders.php` file you can define which folders should be read and ignored.
 
 
-## Ignore certain folders.
-
-Below is an example for ignoring folders, You can change this array located in the `.ignore-folders` file. You can find this file in the root of the application.
-
-Example:
-```php
-.DS_Store
-CallMeBack
-overview
-```
 
 
 
