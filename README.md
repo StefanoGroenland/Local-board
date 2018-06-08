@@ -34,14 +34,13 @@ yarn && yarn dev
 
 ## Ignore certain folders.
 
-Below is an example for ignoring folders, You can change this array located in `app/Http/Controllers/HomeController.php`, when cloning you will see this example.
+Below is an example for ignoring folders, You can change this array located in the `.ignore-folders` file. You can find this file in the root of the application.
 
+Example:
 ```php
-$ignore = collect([
-        '.DS_Store',
-        'CallMeBack',
-        'overview'
-    ]);
+.DS_Store
+CallMeBack
+overview
 ```
 
 
