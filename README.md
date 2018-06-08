@@ -34,7 +34,7 @@ yarn && yarn dev
 
 ## Ignore certain folders.
 
-Below is an example for ignoring folders, You can change this array located in `routes/web.php`, when cloning you will see this example.
+Below is an example for ignoring folders, You can change this array located in `app/Http/Controllers/HomeController.php`, when cloning you will see this example.
 
 ```php
 $ignore = collect([
