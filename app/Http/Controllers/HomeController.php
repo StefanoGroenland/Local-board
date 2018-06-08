@@ -22,11 +22,13 @@ class HomeController extends Controller
         }
         closedir($dirs);
 
-        $ignore = collect([
-            '.DS_Store',
-            'CallMeBack',
-            'overview'
-        ]);
+        try {
+            $contents = file_get_contents('../.ignore-folders');
+            $ignore = explode("\n", $contents);
+            $ignore = collect($ignore);
+        } catch (\Exception $e){
+            throw new \ErrorException("Please add .ignore-folders to the root of this project.");
+        }
 
         $projects = $projects->reject(function($project) use ($ignore){
             return collect($ignore)->contains($project->name);
