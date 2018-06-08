@@ -32,6 +32,6 @@ class HomeController extends Controller
             return collect($ignore)->contains($project->name);
         });
 
-        return view('welcome', ['projects' => $projects]);
+        return view('welcome', ['projects' => $projects->sortBy('name')]);
     }
 }
