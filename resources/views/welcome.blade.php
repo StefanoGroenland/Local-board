@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ app()->getLocale() }}" class="h-full bg-grey-darkest">
+<html lang="{{ app()->getLocale() }}" class="bg-grey-darkest">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,8 +13,8 @@
         <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     </head>
-    <body class="flex flex-col h-full bg-white">
-            <div class="w-screen mx-auto flex-1">
+    <body class="flex flex-col bg-white">
+            <div class="w-screen mx-auto">
                 <div class="bg-green-light text-white p-8 text-center">
                     <h1 class="font-semibold font-sans font-italic">{{ "</ >" }} Projects {{ "</ >" }}</h1>
                 </div>
@@ -30,8 +30,5 @@
                     </div>
                 @endforeach
             </div>
-        <footer class='w-screen text-center border-t border-green-lighter bg-grey-darkest text-white p-4 pin-b'>
-            <h5>Built with <a href="https://tailwindcss.com/docs" class="no-underline text-white">Tailwind</a></h5>
-        </footer>
     </body>
 </html>
