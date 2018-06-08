@@ -57,6 +57,9 @@ class HomeController extends Controller
         return $folders;
     }
 
+    /**
+     * @throws \ErrorException
+     */
     protected function rejectIgnored(): void
     {
         try {
