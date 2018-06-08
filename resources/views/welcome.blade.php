@@ -21,7 +21,9 @@
                 @foreach ($projects->chunk(3) as $chunk)
                     <div class="flex flex-row justify-center">
                         @foreach ($chunk as $project)
-                            <a href="http://{{ $project->url }}" class="bg-grey-lighter w-1/3 m-4 p-8 h-full no-underline text-grey-darkest hover:text-green-light shadow">
+                            <a href="http://{{ $project->url }}"
+                               target="_blank"
+                               class="bg-grey-lighter w-1/3 m-4 p-8 h-full no-underline text-grey-darkest hover:text-green-light shadow">
                                 <h3 class="text-center font-semibold font-sans text-sm">
                                     {{ ucfirst($project->name) }}
                                 </h3>
