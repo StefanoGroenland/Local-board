@@ -51,8 +51,7 @@ class HomeController extends Controller
      */
     protected function folders(): array
     {
-        $contents = file_get_contents('../.folders');
-        $folders = explode("\n", $contents);
+        $folders = config('folders.read');
 
         return $folders;
     }
@@ -63,9 +62,7 @@ class HomeController extends Controller
     protected function rejectIgnored(): void
     {
         try {
-            $contents = file_get_contents('../.ignore-folders');
-            $ignore = explode("\n", $contents);
-            $ignore = collect($ignore);
+            $ignore = collect(config('folders.ignore'));
         } catch (\Exception $e) {
             throw new \ErrorException("Please add .ignore-folders to the root of this project.");
         }
