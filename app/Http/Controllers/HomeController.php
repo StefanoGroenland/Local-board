@@ -10,17 +10,26 @@ class HomeController extends Controller
     public function index()
     {
         $projects = collect();
-        if ($dirs = opendir('../../')) {
-            while (false !== ($entry = readdir($dirs))) {
-                if ($entry != '.' && $entry != '..') {
-                    $projects->push(new Fluent([
-                        'name' => $entry,
-                        'url'  => $entry . env('APP_TLD')
-                    ]));
+
+        $contents = file_get_contents('../.folders');
+        $folders = explode("\n", $contents);
+        foreach($folders as $folder){
+            if ($dirs = opendir('../../'.$folder)) {
+                while (false !== ($entry = readdir($dirs))) {
+                    if ($entry != '.' && $entry != '..') {
+                        $projects->push(new Fluent([
+                            'name' => $entry,
+                            'url'  => $entry . env('APP_TLD')
+                        ]));
+                    }
                 }
             }
+            closedir($dirs);
         }
-        closedir($dirs);
+
+
+
+
 
         try {
             $contents = file_get_contents('../.ignore-folders');
