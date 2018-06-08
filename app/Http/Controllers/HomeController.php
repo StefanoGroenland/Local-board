@@ -13,7 +13,7 @@ class HomeController extends Controller
     {
         $this->projects = collect();
 
-        $this->pushProjectsFrom($this->readFolders());
+        $this->pushProjectsFrom($this->folders());
 
         try {
             $contents = file_get_contents('../.ignore-folders');
@@ -32,6 +32,8 @@ class HomeController extends Controller
 
     /**
      * @param $folders
+     *
+     * @throws \ErrorException
      */
     protected function pushProjectsFrom($folders): void
     {
@@ -57,7 +59,7 @@ class HomeController extends Controller
     /**
      * @return array
      */
-    protected function readFolders(): array
+    protected function folders(): array
     {
         $contents = file_get_contents('../.folders');
         $folders = explode("\n", $contents);
