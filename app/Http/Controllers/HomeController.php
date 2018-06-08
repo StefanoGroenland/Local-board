@@ -19,11 +19,11 @@ class HomeController extends Controller
             $contents = file_get_contents('../.ignore-folders');
             $ignore = explode("\n", $contents);
             $ignore = collect($ignore);
-        } catch (\Exception $e){
+        } catch (\Exception $e) {
             throw new \ErrorException("Please add .ignore-folders to the root of this project.");
         }
 
-        $this->projects = $this->projects->reject(function($project) use ($ignore){
+        $this->projects = $this->projects->reject(function ($project) use ($ignore) {
             return collect($ignore)->contains($project->name);
         });
 
@@ -35,18 +35,22 @@ class HomeController extends Controller
      */
     protected function pushProjectsFrom($folders): void
     {
-        foreach ($folders as $folder) {
-            if ($dirs = opendir('../../'.$folder)) {
-                while (false !== ($entry = readdir($dirs))) {
-                    if ($entry != '.' && $entry != '..') {
-                        $this->projects->push(new Fluent([
-                            'name' => $entry,
-                            'url'  => $entry . env('APP_TLD')
-                        ]));
+        try {
+            foreach ($folders as $folder) {
+                if ($dirs = opendir('../../' . $folder)) {
+                    while (false !== ($entry = readdir($dirs))) {
+                        if ($entry != '.' && $entry != '..') {
+                            $this->projects->push(new Fluent([
+                                'name' => $entry,
+                                'url'  => $entry . env('APP_TLD')
+                            ]));
+                        }
                     }
                 }
+                closedir($dirs);
             }
-            closedir($dirs);
+        } catch (\Exception $e) {
+            throw new \ErrorException("Please add .folders to the root of this project.");
         }
     }
 
