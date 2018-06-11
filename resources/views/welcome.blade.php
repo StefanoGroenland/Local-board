@@ -24,20 +24,18 @@
                type="text"
                placeholder="Search...">
     </div>
-    @foreach ($projects->chunk(3) as $chunk)
-        <div class="flex flex-row justify-center" id="jetsContent">
-            @foreach ($chunk as $project)
-                <a href="http://{{ $project->url }}"
-                   data-content="{{ $project->name }}"
-                   target="_blank"
-                   class="bg-grey-lighter w-1/3 m-4 p-8 h-full no-underline text-grey-darkest hover:text-green-light shadow">
-                    <h3 class="site text-center font-semibold font-sans text-sm">
-                        {{ ucfirst($project->name) }}
-                    </h3>
-                </a>
-            @endforeach
-        </div>
-    @endforeach
+    <div class="flex flex-wrap justify-center" id="jetsContent">
+        @foreach ($projects as $project)
+            <a href="http://{{ $project->url }}"
+               data-content="{{ $project->name }}"
+               target="_blank"
+               class="bg-grey-lighter w-full md:w-1/4 my-4 mx-2 p-8 h-full no-underline text-grey-darkest hover:text-green-light shadow">
+                <h3 class="site text-center font-semibold font-sans text-sm">
+                    {{ ucfirst($project->name) }}
+                </h3>
+            </a>
+        @endforeach
+    </div>
 </div>
 
 <script src="{{ asset('js/app.js') }}"></script>
