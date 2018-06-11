@@ -17,6 +17,12 @@ class HomeController extends Controller
 
         $this->rejectIgnored();
 
+        if (request()->wantsJson()) {
+            return response()->json([
+                'data' => $this->projects
+            ], 200);
+        }
+
         return view('welcome', ['projects' => $this->projects->sortBy('name')]);
     }
 
