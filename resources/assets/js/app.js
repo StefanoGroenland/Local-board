@@ -7,6 +7,7 @@
 
 require('./bootstrap');
 
+window.jets = require('jets');
 window.Vue = require('vue');
 
 /**
