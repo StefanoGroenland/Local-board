@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Projects</title>
 
@@ -14,7 +15,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body class="flex flex-col bg-white">
-<div class="w-full mx-auto">
+<div class="w-full mx-auto" id="app">
     <div class="bg-green-light text-white p-8 text-center">
         <h1 class="font-semibold font-sans font-italic">{{ "</ >" }} Projects {{ "</ >" }}</h1>
 
@@ -45,7 +46,7 @@
         integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
         crossorigin="anonymous"></script>
 <script>
-    var jets = new Jets({
+    var jets = window.jets({
         searchTag: '#jetsSearch',
         contentTag: '#jetsContent'
     });
