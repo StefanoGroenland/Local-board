@@ -26,7 +26,7 @@
     </div>
     <div class="flex flex-wrap justify-center" id="jetsContent">
         @foreach ($projects as $project)
-            <a href="http://{{ $project->url }}"
+            <a href="//{{ $project->url }}"
                data-content="{{ $project->name }}"
                target="_blank"
                class="bg-grey-lighter w-full md:w-1/4 my-4 mx-2 p-8 h-full no-underline text-grey-darkest hover:text-green-light shadow">
