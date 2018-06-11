@@ -14,7 +14,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body class="flex flex-col bg-white">
-<div class="w-screen mx-auto">
+<div class="w-full mx-auto">
     <div class="bg-green-light text-white p-8 text-center">
         <h1 class="font-semibold font-sans font-italic">{{ "</ >" }} Projects {{ "</ >" }}</h1>
 
