@@ -42,7 +42,7 @@ class HomeController extends Controller
                 closedir($dirs);
             }
         } catch (\Exception $e) {
-            throw new \ErrorException("Please add .folders to the root of this project.");
+            throw new \ErrorException("Something went wrong loading the folders from our config.");
         }
     }
 
