@@ -19,13 +19,15 @@
         <h1 class="font-semibold font-sans font-italic">{{ "</ >" }} Projects {{ "</ >" }}</h1>
 
         <input class="shadow appearance-none border rounded w-1/4 mt-3 py-4 px-3 text-grey-darker leading-tight"
+               id="jetsSearch"
                type="text"
                placeholder="Search...">
     </div>
     @foreach ($projects->chunk(3) as $chunk)
-        <div class="flex flex-row justify-center">
+        <div class="flex flex-row justify-center" id="jetsContent">
             @foreach ($chunk as $project)
                 <a href="http://{{ $project->url }}"
+                   data-content="{{ $project->name }}"
                    target="_blank"
                    class="bg-grey-lighter w-1/3 m-4 p-8 h-full no-underline text-grey-darkest hover:text-green-light shadow">
                     <h3 class="site text-center font-semibold font-sans text-sm">
@@ -37,23 +39,16 @@
     @endforeach
 </div>
 
+<script src="{{ asset('js/app.js') }}"></script>
 <script
         src="https://code.jquery.com/jquery-3.3.1.js"
         integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
         crossorigin="anonymous"></script>
 <script>
-    $('input').on("change keyup paste", function () {
-        var val = $(this).val();
-        $('.site').parent().show();
-
-        if (val !== "") {
-            $('h3:not(:contains(' + capitalizeFirstLetter(val) + '))').parent().hide();
-        }
+    var jets = new Jets({
+        searchTag: '#jetsSearch',
+        contentTag: '#jetsContent'
     });
-
-    function capitalizeFirstLetter(string) {
-        return string.charAt(0).toUpperCase() + string.slice(1);
-    }
 </script>
 </body>
 </html>
