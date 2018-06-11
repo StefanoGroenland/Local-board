@@ -19,7 +19,7 @@
     <div class="bg-green-light text-white p-8 text-center">
         <h1 class="font-semibold font-sans font-italic">{{ "</ >" }} Projects {{ "</ >" }}</h1>
 
-        <input class="shadow appearance-none border rounded w-1/4 mt-3 py-4 px-3 text-grey-darker leading-tight"
+        <input class="shadow appearance-none border rounded w-full md:w-1/4 mt-3 py-4 px-3 text-grey-darker leading-tight"
                id="jetsSearch"
                type="text"
                placeholder="Search...">
