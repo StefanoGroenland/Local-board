@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Fluent;
 
-class HomeController extends Controller
+class ProjectController extends Controller
 {
     protected $projects;
 

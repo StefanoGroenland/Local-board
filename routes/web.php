@@ -12,5 +12,5 @@
 */
 
 Route::group(['middleware' => ['password-protected']], function () {
-    Route::get('/', 'HomeController@index');
+    Route::get('/', 'ProjectController@index');
 });
